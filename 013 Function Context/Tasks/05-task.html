@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 05</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <div id="output2"></div>
+    <div id="output3"></div>
+    <input id="number"> <button id="btn">start</button>
+    <script>
+        /*
+        Задание:
+        Напишите сценарии "Игра 'Угадай число'". Суть игры - угадать за меньшее количество попыток число, которое загадал сценарий.
+        Каждый раз, когда игрок пытается угадать число, сценарий выводит подсказку - меньшее или большее число было загадано сценарием.
+        Сценарий загадывает число только один раз в начале игры и это число не меняется до завершения игры.
+        При завершении игры выведите пользователю информацию о том, с какой попытки угадано значение и сколько было потрачено на это времени.
+
+        Для генерации случайного числа используйте следующий код:
+        let randomValue = Math.floor(Math.random() * 101); // случайное значение от 0 до 100 будет записано в переменную randomValue
+        
+        Пример игры:
+        Сценарий: я загадал случайное значение от 0 до 100
+        Пользователь: 50
+        Сценарий: я загадал значение больше, чем 50
+        Пользователь: 75
+        Сценарий: я загадал значение меньше, чем 75
+        Пользователь: 62
+        Сценарий: я загадал значение меньше, чем 62
+        Пользователь: 56
+        Сценарий: Правильно! Загаданное значение 56. Вы угадали с 4й попытки за 10 сек.
+        */
+        let output = document.querySelector('#output')
+        let number = document.querySelector('#number')
+        document.querySelector('#btn').addEventListener('click', game)
+        let time = 0
+        let timerId = null
+        let trry = 0
+        let randomValue = Math.floor(Math.random() * 101);
+        let output2 = document.querySelector('#output2')
+        let output3 = document.querySelector('#output3')
+        document.body.addEventListener('keydown', function (e) {
+            if (e.key == 'Enter') {
+                game()
+            }
+        })
+
+
+        alert('я загадал случайное значение от 0 до 100')
+        timerId = setInterval(() => {
+            time++
+            output2.innerHTML = time + 'sec'
+
+        }, 1000)
+
+        output.innerHTML = 'fill number'
+
+        function game() {
+            trry++
+            output3.innerHTML = trry + 'try'
+
+            let valueInput = number.value
+
+            if (valueInput > randomValue) {
+                output.innerHTML = ` я загадал значение меньше, чем  ${valueInput} `
+            } else if (valueInput < randomValue) {
+                output.innerHTML = ` я загадал значение больше, чем  ${valueInput} `
+            }
+            if (valueInput == randomValue) {
+                clearInterval(timerId)
+                alert(` Правильно! Загаданное значение ${randomValue}. Вы угадали с ${trry} попытки за ${time} сек. `)
+
+            }
+            number.value = ''
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
