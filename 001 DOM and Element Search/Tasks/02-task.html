@@ -37,6 +37,14 @@
         }
         return color;
     }
+
+    let p = document.querySelectorAll('p')
+
+    for (const par of p) {
+        par.style.border = `1px solid ${getRandomColor()}`
+    }
+
+
 </script>
 
 </html>
