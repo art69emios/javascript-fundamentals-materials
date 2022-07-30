@@ -17,7 +17,7 @@
 
 <body>
     <div id="color-sample"></div>
-    <p>Цвет: </p>
+    <p>Цвет: <span></span></p>
 
     <script>
         /*
@@ -37,6 +37,9 @@
 
         let colorSampleDiv = document.querySelector("#color-sample");
         colorSampleDiv.style.backgroundColor = getRandomColor();
+
+        let colorValue = document.querySelector('span')
+        colorValue.textContent = getRandomColor()
 
 
     </script>

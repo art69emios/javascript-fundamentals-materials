@@ -487,13 +487,24 @@
                 }
             ];
 
+            let email = document.querySelector('#emailAddressesOutput')
+            let friends = document.querySelector('#greatesFriendsCountOutput')
+            let greatestBalance = document.querySelector('#greatestBalanceCompanyOutput')
+            let lowestBalance = document.querySelector('#lowestBalanceCompanyOutput')
+
+
+
+
             function showAllEmails() {
-                console.log("Электронные адреса пользователей:")
-                users.forEach(user => console.log(user.email));
+                let output = ''
+                users.forEach(user => output += user.email + '</br>');
+                email.innerHTML = output
+
             }
 
             function showHigestFriendCount() {
                 console.log("Пользователи с наибольшим количеством друзей");
+                let output = ''
 
                 let max = Number.MIN_VALUE;
 
@@ -504,12 +515,16 @@
 
                 users
                     .filter(user => user.friends.length == max)
-                    .forEach(user => console.log(user.name.first + " " + user.name.last));
+                    .forEach(user => output += user.name.first + " " + user.name.last + '</br>');
+                friends.innerHTML = output
             }
 
             function showMinMaxBalance() {
                 let minBalance = Number.MAX_VALUE;
                 let maxBalance = Number.MIN_VALUE;
+
+             
+
 
                 users.forEach(user => {
                     const currentBalance = +user.balance;
@@ -523,13 +538,17 @@
                 console.log("Компании пользователей с наибольшим балансом:")
                 users
                     .filter(user => user.balance == maxBalance)
-                    .forEach(user => console.log(user.company));
+                    .forEach(user => greatestBalance.textContent = user.company);
 
                 console.log("Компании пользователей с наименьшим балансом:")
                 users
                     .filter(user => user.balance == minBalance)
-                    .forEach(user => console.log(user.company));
+                    .forEach(user => lowestBalance.textContent = user.company);
+
+            
+
             }
+            
 
             showAllEmails();
             showHigestFriendCount();
