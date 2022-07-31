@@ -29,6 +29,17 @@
             age: "25",
         }
 
+        function getElemAttr(object) {
+            for (const key in object) {
+                if (Object.hasOwnProperty.call(object, key)) {
+                    const element = object[key];
+                    let el = document.querySelector(`[data-bind='${key}']`)
+                    el.textContent = element
+                }
+            }
+        }
+        getElemAttr(user)
+
     </script>
 </body>
 

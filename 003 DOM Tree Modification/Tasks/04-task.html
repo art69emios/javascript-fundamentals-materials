@@ -61,6 +61,29 @@
             }
         ];
 
+        function createTr(column1, column2) {
+            let tr = document.createElement('tr')
+
+            tr.append(createTd(column1))
+            tr.append(createTd(column2))
+            return tr
+
+        }
+
+        function createTd(text) {
+            let td = document.createElement('td')
+            td.textContent = text
+            return td
+        }
+
+        let table = document.createElement('table')
+
+        for (const sour of source) {
+            table.append(createTr(sour.month, sour.amount))
+        }
+
+        document.body.append(table)
+
     </script>
 </body>
 

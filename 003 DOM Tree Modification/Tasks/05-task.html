@@ -499,6 +499,10 @@
         users.forEach(user => {
             let card = createUserCard(user);
             document.body.append(card);
+
+            if(user.friends.length < 5){
+                card.style.border = '2px solid red'
+            }
         });
     </script>
 </body>

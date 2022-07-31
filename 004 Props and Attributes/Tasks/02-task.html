@@ -15,7 +15,7 @@
         <p data-value="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, ab. Voluptas temporibus quam quibusdam odio doloribus corrupti assumenda rem rerum, iusto natus animi accusamus dolore. Quas architecto libero cum modi.</p>
         <p my-attribute="37">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus officiis natus itaque error saepe, alias harum porro nemo sint? Provident, optio. Aliquid fuga qui assumenda iusto, nihil id obcaecati est?</p>
         <a my-attribute="7" href="https://itvdn.com">ITVDN</a>
-        <span data-value="9">Hello world</span>
+        <span data-value="10">Hello world</span>
     </div>
 
     <script>
@@ -23,6 +23,27 @@
         Задание:
         Посчитайте сумму значений атрибутов data-value и my-attribute всех элементов на текущей странице и отобразите ее пользователю.
         */
+
+     
+        function getAttrSum(attributeName) {
+            let sum = 0
+            let attributes = document.querySelectorAll('[' + attributeName + ']')
+
+            for (const attribute of attributes) {
+               let attrNumber =  attribute.getAttribute(attributeName)
+               sum += +attrNumber
+            }
+            return sum
+        }
+
+        let total = 0
+        total += getAttrSum('data-value')
+        total += getAttrSum('my-attribute')
+        alert(total)
+
+
+
+
     </script>
 </body>
 

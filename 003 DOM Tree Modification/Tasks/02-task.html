@@ -15,10 +15,10 @@
 
 <body>
     Рабочие дни
-    <div></div>
+    <div id="workDay"></div>
 
     Выходные дни
-    <div></div>
+    <div id="dayOff"></div>
 
     <script>
        /*
@@ -29,6 +29,9 @@
         Параграфы создавайте с помощью перебора массива days. В параграф помещайте значение свойства name.
         */
 
+        let workDay = document.querySelector('#workDay')
+        let dayOff = document.querySelector('#dayOff')
+
         let days = [{ name: "Sunday", isWorkDay: false },
         { name: "Monday", isWorkDay: true },
         { name: "Tuesday", isWorkDay: true },
@@ -36,6 +39,19 @@
         { name: "Thursday", isWorkDay: true },
         { name: "Friday", isWorkDay: true },
         { name: "Saturday", isWorkDay: false }];
+
+        for (const day of days) {
+            let p = document.createElement('p')
+
+            if(day.isWorkDay){
+                p.innerText = day.name
+                workDay.append(p)
+            }else{
+                p.innerText = day.name
+                dayOff.append(p)
+
+            }
+        }
     </script>
 </body>
 
