@@ -40,27 +40,79 @@
         input2 сделайте, в случае ошибки, #input2Error видимым.
         */
         let input1 = document.querySelector("#input1");
-        let input3 = document.querySelector("#input2");
+        let input2 = document.querySelector("#input2");
+        let error1 = document.querySelector('#input1Error')
+        let error2 = document.querySelector('#input2Error')
+
 
         let addBtn = document.querySelector("#add-btn");
         let remBtn = document.querySelector("#rem-btn");
         let mulBtn = document.querySelector("#mul-btn");
         let divBtn = document.querySelector("#div-btn");
+        let resetBtn = document.querySelector('#reset-btn')
+
+        resetBtn.addEventListener('click', function(){
+            input1.value = ''
+            input2.value = ''
+
+
+        })
 
         addBtn.addEventListener("click", function () {
-            alert(Number(input1.value) + Number(input2.value));
+            if(!input1.value){
+                input1.style.border = '1px solid red'
+                error1.style.display = 'block'
+            }
+            if(!input2.value){
+                input2.style.border = '1px solid red'
+                error2.style.display = 'block'
+            }else{
+                alert(Number(input1.value) + Number(input2.value));
+
+            }
+
         });
 
         remBtn.addEventListener("click", function () {
-            alert(input1.value - input2.value);
+            if(!input1.value){
+                input1.style.border = '1px solid red'
+                error1.style.display = 'block'
+            }
+            if(!input2.value){
+                input2.style.border = '1px solid red'
+                error2.style.display = 'block'
+            }else{
+                alert(Number(input1.value) - Number(input2.value));
+
+            }
         });
 
         mulBtn.addEventListener("click", function () {
-            alert(input1.value * input2.value);
+            if(!input1.value){
+                input1.style.border = '1px solid red'
+                error1.style.display = 'block'
+            }
+            if(!input2.value){
+                input2.style.border = '1px solid red'
+                error2.style.display = 'block'
+            }else{
+                alert(Number(input1.value) * Number(input2.value));
+
+            }
         });
 
         divBtn.addEventListener("click", function () {
-            alert(input1.value / input2.value);
+            if(!input1.value){
+                input1.style.border = '1px solid red'
+                error1.style.display = 'block'
+            }
+            if(!input2.value){
+                input2.style.border = '1px solid red'
+                error2.style.display = 'block'
+            }else{
+                alert(Number(input1.value) / Number(input2.value));
+
+            }
         });
     </script>
 </body>

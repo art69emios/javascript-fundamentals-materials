@@ -61,6 +61,11 @@
             padding-left: 4px;
             width: 68%;
         }
+        .deleteBtn{
+            margin: auto;
+            background-color: red;
+            
+        }
     </style>
 </head>
 
@@ -95,13 +100,24 @@
             input.addEventListener("click", changeTaskState);
             input.type = "checkbox";
 
+            let deleteBtn = document.createElement('button')
+            deleteBtn.textContent = 'delete'
+            deleteBtn.addEventListener('click', deleteParentEl)
+            deleteBtn.classList.add('deleteBtn')
+
             let p = document.createElement("p");
             p.innerText = text;
 
             div.append(input);
             div.append(p);
+            div.append(deleteBtn)
 
             return div;
+        }
+
+        function deleteParentEl() {
+            
+            this.parentElement.remove()
         }
 
         function changeTaskState() {
